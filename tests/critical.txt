@@ -1,0 +1,19 @@
+# Critical Tests for Pre-Push Hook
+# These tests MUST pass before pushing to main
+# Keep this list small (<10 seconds total runtime)
+
+# Core functionality
+tests/test_gate2_features.py::TestEndToEndWorkflow::test_full_workflow
+
+# Session protocols
+tests/test_session_protocol.py::test_pattern_detection
+tests/test_session_protocol.py::test_wake_command_exists
+
+# Installer basics
+tests/test_installer.py::test_installer_minimal_template
+
+# Pattern system
+tests/test_gate2_features.py::TestApplyCommand::test_apply_valid_pattern
+
+# Evolution tracking
+tests/test_evolution.py::TestEvolution::test_add_decision_entry
