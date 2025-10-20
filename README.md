@@ -1,463 +1,384 @@
-# Aget Advisor Template
+# Template Developer AGET
 
-> **Read-only advisory agents with persona-based guidance**
+> **Code Analysis Advisor Template** - Pre-configured agent for code quality, standards compliance, debugging assistance, and specification consistency analysis
 
-Transform any domain into an AI advisor that provides expert guidance without modifying systems. Supports 5 distinct personas: teacher, mentor, consultant, guru, and coach.
+Transform your codebase into insights with an AI advisor specialized in code analysis. Provides expert recommendations on code quality, standards compliance, debugging strategies, and spec-to-code consistency - without modifying your code.
 
-**Current Version**: v2.7.0 "Portfolio Governance"
+**Current Version**: v2.7.0
+
+**Template Type**: Developer (Code Analysis Advisor)
 
 ---
 
 ## What This Is
 
-**Not an action-taking agent** - Advisor agents operate in read-only mode, providing recommendations, analysis, and guidance without executing changes.
+**An advisory agent for code analysis** - Analyzes code quality, checks standards compliance, assists with debugging, and validates spec consistency. Provides recommendations and insights without executing changes.
 
 **Mental Model**:
 ```
-You → Question → AI Advisor → Analyzes Context → Recommends (with confidence + assumptions)
+Your Code → Analysis Request → AI Advisor → Runs Pattern Analysis → Recommends Improvements
 ```
 
-Your advisor reads, analyzes, critiques, and recommends - but never modifies files, executes commands with side effects, or takes action on your behalf.
+Your advisor analyzes code metrics, detects issues, ranks hypotheses, and recommends fixes - but never modifies files or executes commands.
 
 ---
 
-## Quick Start (3 Minutes)
+## Quick Start (5 Minutes)
 
 ### 1. Clone and Configure
 
 ```bash
-# Create your advisor instance
-git clone https://github.com/aget-framework/template-advisor-aget.git my-domain-advisor-aget
-cd my-domain-advisor-aget
+# Create your code analysis advisor instance
+git clone https://github.com/aget-framework/template-developer-aget.git my-code-advisor-aget
+cd my-code-advisor-aget
+
+# Update agent identity
+# Edit .aget/version.json and set:
+#   "agent_name": "my-code-advisor-aget"
+#   "domain": "code-analysis"
 ```
 
-### 2. Choose Your Persona
-
-Pick the persona that matches your advisory style:
-
-| Persona | Focus | Best For |
-|---------|-------|----------|
-| **teacher** | Instruction & learning | Explaining concepts, structured education |
-| **mentor** | Growth & development | Career guidance, reflective questions |
-| **consultant** | Solutions & analysis | Trade-off analysis, decision support |
-| **guru** | Expertise & principles | Best practices, authoritative guidance |
-| **coach** | Performance & improvement | Code reviews, incremental feedback |
-
-Edit `.aget/version.json`:
-```json
-{
-  "agent_name": "my-domain-advisor-aget",
-  "persona": "consultant",  // ← Set your persona here
-  "domain": "system-architecture"  // ← Your specialty area
-}
-```
-
-### 3. Start Advising
+### 2. Verify Installation
 
 ```bash
-# Open with your AI assistant
-claude .
+# Run contract tests
+python3 -m pytest tests/ -v
+
+# Expected: 21/21 tests passing
 ```
 
-```
-You: hey
+### 3. Run Example
 
-AI: my-domain-advisor-aget v2.5.0 (Advisor)
-    🎭 Mode: ADVISORY (recommendations only)
-    👤 Persona: consultant
-    📖 Domain: system-architecture
+```bash
+# Try code quality analysis example
+cd examples/code_quality_analysis
+python3 run_analysis.py
 
-    🚫 Read-only: Cannot modify files or execute commands
-    ✅ Can: Analyze, recommend, critique, guide
-
-    Ready for questions.
-
-You: Should I use microservices or monolith for this project?
-
-AI: As advisor: Let me understand your context first.
-
-    **Clarifying questions**:
-    - What's your team size and experience level?
-    - What's your deployment cadence target?
-    - What are your scaling requirements?
-    - What's your operational maturity?
-
-    [After your answers...]
-
-    **Recommendation** (Confidence: Medium)
-
-    Based on [team size: 5], [cadence: monthly], [maturity: low]:
-
-    ➡️  Start with modular monolith
-
-    **Reasoning**:
-    - Simpler deployment model matches team capacity
-    - Monthly cadence doesn't require independent service releases
-    - Low operational maturity = microservices overhead risky
-
-    **Trade-offs**:
-    - ✅ Faster initial development
-    - ✅ Lower operational burden
-    - ⚠️  Will require refactoring if scaling becomes issue
-    - ❌ Less independent team scaling
-
-    **Assumptions**:
-    - Team staying stable (<10 people) for next 12 months
-    - Performance requirements met by vertical scaling
-    - No regulatory requirements for service isolation
-
-    **Would change recommendation if**:
-    - Team growing rapidly (>15 people in 6 months)
-    - Performance hotspots identified requiring independent scaling
-    - Multiple products requiring independent release cycles
-
-You: wind down
-
-AI: [Commits session notes with advisory context]
+# See analysis of sample code with quality issues
 ```
 
 ---
 
-## What Advisors Can Do
+## Key Capabilities
 
-### ✅ Advisory Capabilities
+### 1. Code Quality Analysis
 
-- **Analyze** - Read files, examine codebases, assess quality
-- **Recommend** - Suggest approaches with confidence levels and assumptions
-- **Critique** - Provide specific, actionable feedback with evidence
-- **Guide** - Walk through concepts, answer questions, provide resources
-- **Compare** - Present options with trade-offs and context
-- **Explain** - Break down complex topics with structured learning
-- **Assess** - Evaluate quality, maturity, readiness
+Analyzes code complexity, maintainability, technical debt, and code smells.
 
-### 🚫 What Advisors Cannot Do
+**Metrics**:
+- Cyclomatic complexity (decision point counting)
+- Maintainability index (0-100 scale)
+- Technical debt detection (TODO/FIXME/HACK)
+- Code smell detection (long methods, high complexity, nested conditionals)
+- Overall quality rating (0-10)
 
-- **Modify files** - No Edit, Write, or file modification tools
-- **Execute commands** - No Bash with side effects (can read-only inspect)
-- **Create artifacts** - Cannot write code, configs, or documentation
-- **Take action** - Cannot merge PRs, deploy systems, or change state
+**Example**:
+```python
+from patterns.analysis.code_quality import analyze
 
-**Enforcement**: 4 layers
-1. **Declarations** - `instance_type: "aget"` in version.json
-2. **Contract tests** - 16 automated tests validate read-only boundaries
-3. **Documentation** - AGENTS.md protocols guide behavior
-4. **Human oversight** - You verify advisor stays in role
+result = analyze({
+    "repo_path": "./src",
+    "language": "python"
+})
+
+print(f"Overall Quality: {result['overall_quality']}/10")
+print(f"Complexity: {result['metrics']['complexity']['avg_cyclomatic']}")
+print(f"Maintainability: {result['metrics']['maintainability']['index']}/100")
+```
+
+### 2. Standards Compliance Checking
+
+Checks code against coding standards with configurable precedence.
+
+**Standards Precedence**:
+1. **Repo-specific** (`.coding-standards.md` in repo root)
+2. **Agent-level** (custom standards in `.aget/`)
+3. **Built-in** (PEP-8 for Python, ESLint for JavaScript, gofmt for Go)
+
+**Example**:
+```python
+from patterns.analysis.standards_check import analyze
+
+result = analyze({
+    "repo_path": "./src",
+    "language": "python",
+    "standards": "auto"  # Use precedence order
+})
+
+print(f"Compliance Rating: {result['compliance_rating']}/10")
+print(f"Standards Applied: {result['standards_applied']}")
+```
+
+### 3. Debugging Assistance
+
+Analyzes errors and provides ranked root cause hypotheses with fix strategies.
+
+**Error Patterns Recognized**:
+- null_pointer_exception (AttributeError with 'NoneType')
+- missing_dict_key (KeyError)
+- list_index_out_of_range (IndexError)
+- calling_non_function (TypeError "not callable")
+- async_await_missing (RuntimeError "coroutine never awaited")
+- And more...
+
+**Example**:
+```python
+from patterns.analysis.debug_assist import analyze
+
+result = analyze({
+    "error_type": "AttributeError",
+    "error_message": "'NoneType' object has no attribute 'split'",
+    "code_context": {
+        "file": "app.py",
+        "line": 22,
+        "code_snippet": "email_parts = user.email.split('@')"
+    }
+})
+
+print(f"Error Pattern: {result['error_pattern']}")
+for hypothesis in result['root_cause_hypotheses']:
+    print(f"{hypothesis['rank']}. {hypothesis['cause']} ({hypothesis['confidence']})")
+```
+
+### 4. Specification Consistency
+
+Compares code implementation against formal specifications to detect gaps and drift.
+
+**Spec Format Support**:
+- **YAML** (with capabilities or EARS requirements)
+- **Markdown** (CAP-XXX or REQ-XXX identifiers)
+- **Plain text** (numbered or bulleted lists)
+
+**Example**:
+```python
+from patterns.analysis.spec_consistency import analyze
+
+result = analyze({
+    "spec_path": "./spec.yaml",
+    "repo_path": "./src",
+    "language": "python"
+})
+
+print(f"Coverage: {result['coverage']['percentage']}%")
+print(f"Gaps: {len(result['gaps'])} missing capabilities")
+```
+
+### 5. Multi-Repository Scanning
+
+Discovers and analyzes multiple repositories for consistency and shared patterns.
+
+**Discovery Modes**:
+- **Auto-scan**: Automatically discover git repositories in base path
+- **Configured**: Use explicit include/exclude lists from `.aget/config/repos.yaml`
+
+**Example**:
+```python
+from patterns.analysis.multi_repo_scan import analyze
+
+result = analyze({
+    "scan_mode": "auto",
+    "base_path": "~/github",
+    "analysis_type": "consistency"
+})
+
+print(f"Discovered: {result['repos_discovered']} repositories")
+```
 
 ---
 
-## Supported Personas
+## Examples
 
-Each persona provides the same technical capabilities but with different communication styles:
+All examples are runnable and validated. Each includes:
+- Sample code/specification demonstrating the pattern
+- Runnable script using pattern's `analyze()` function
+- README with usage instructions and learning points
 
-### 🎓 Teacher
-**Focus**: Instruction and structured learning
-**Style**: Didactic, explanatory, comprehensive examples
-**Best for**: Learning new concepts, understanding fundamentals
+### Run Examples
 
-**Example interaction**:
-```
-You: Explain dependency injection
+```bash
+# Validate all examples
+./scripts/validate_examples.sh
 
-Teacher: Let's break this down into digestible steps.
-
-**Core Concept**: Dependency Injection (DI) separates object creation
-from object usage.
-
-**Step 1 - The Problem**: [Explains tight coupling with example]
-**Step 2 - The Solution**: [Shows DI pattern with code]
-**Step 3 - Benefits**: [Lists advantages with scenarios]
-**Step 4 - Verification**: Can you identify the injected dependency
-                         in this example? [Quiz question]
+# Or run individually
+cd examples/code_quality_analysis && python3 run_analysis.py
+cd examples/standards_checking && python3 run_check.py
+cd examples/debugging_assistance && python3 run_debug.py
+cd examples/spec_consistency && python3 run_check.py
 ```
 
-### 🌱 Mentor
-**Focus**: Growth and professional development
-**Style**: Supportive, reflective, growth-oriented
-**Best for**: Career guidance, skill development, long-term planning
+**Example Scenarios**:
+- **code_quality_analysis**: Analyzes code with high complexity and technical debt
+- **standards_checking**: Detects PEP-8 violations (E501, E722, W293)
+- **debugging_assistance**: Analyzes TypeError from None subscript
+- **spec_consistency**: Detects 60% gap between spec and implementation
 
-**Example interaction**:
-```
-You: Should I focus on frontend or backend?
+---
 
-Mentor: Let's explore what drives you.
+## Pattern Usage
 
-**Reflection questions**:
-- What energizes you more: visual design or system architecture?
-- When you've enjoyed past projects, what were you building?
-- What does career success look like to you in 5 years?
+All patterns follow a common interface:
 
-[After reflection...]
+```python
+def analyze(input_data: dict) -> dict:
+    """
+    Args:
+        input_data: Analysis parameters (pattern-specific)
 
-Based on your answers, I see strong systems thinking and interest
-in scale. Backend development aligns with those strengths.
-
-**Growth path suggestion**: [Personalized learning roadmap]
-**Check-in milestone**: Let's revisit in 3 months after you've
-                       explored [specific technology]
+    Returns:
+        dict: Analysis results with status, metrics, recommendations
+    """
 ```
 
-### 💼 Consultant
-**Focus**: Solutions and professional analysis
-**Style**: Formal, analytical, trade-off focused
-**Best for**: Technical decisions, architecture choices, vendor selection
+### Pattern Locations
 
-**Example interaction**:
 ```
-You: Which database should I use?
-
-Consultant: Let me analyze your requirements.
-
-**Context gathered**: [Lists your constraints, scale, budget]
-
-**Option A: PostgreSQL**
-✅ Pros: ACID guarantees, rich query language, free
-⚠️  Cons: Vertical scaling limits, operational overhead
-📊 Fit score: 8/10
-
-**Option B: DynamoDB**
-✅ Pros: Infinite scale, managed service, predictable latency
-⚠️  Cons: Limited query patterns, cost at scale, vendor lock-in
-📊 Fit score: 6/10
-
-**Recommendation**: PostgreSQL (Confidence: High)
-**Reasoning**: [Evidence-based analysis]
-**Assumptions**: [Explicit assumptions]
+.aget/patterns/analysis/
+├── code_quality.py          # Code quality metrics
+├── standards_check.py       # Standards compliance
+├── debug_assist.py          # Error analysis
+├── spec_consistency.py      # Spec-to-code validation
+├── multi_repo_scan.py       # Multi-repo discovery
+└── __init__.py              # Common interface
 ```
 
-### 🧙 Guru
-**Focus**: Deep expertise and first principles
-**Style**: Authoritative, principle-based, historically informed
-**Best for**: Best practices, industry standards, architectural wisdom
+### Import Patterns
 
-**Example interaction**:
-```
-You: What's the right way to handle errors?
+```python
+import sys
+import os
 
-Guru: This is a foundational question with a clear answer rooted
-      in decades of systems engineering.
+# Add .aget to path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '.aget'))
 
-**First Principle**: Errors are values, not control flow.
-
-**Historical context**: Exception-based error handling emerged from
-Lisp (1960s), but exceptional cases aren't truly exceptional in
-distributed systems. Go (2009) and Rust (2015) returned to
-explicit error values.
-
-**Best practice**:
-1. Make errors visible in function signatures
-2. Handle errors at decision boundaries
-3. Log context, not just messages
-4. Fail fast, recover deliberately
-
-**Anti-pattern**: Catch-all exception handlers that mask problems
-
-This principle applies across languages: Result<T,E> in Rust,
-Either in Haskell, error returns in Go, Result types in TypeScript.
+from patterns.analysis.code_quality import analyze
+from patterns.analysis.standards_check import analyze
+# ... etc
 ```
 
-### 🏃 Coach
-**Focus**: Performance and incremental improvement
-**Style**: Encouraging, iterative, practice-focused
-**Best for**: Code reviews, skill practice, performance optimization
+---
 
-**Example interaction**:
+## Contract Testing
+
+The template includes 21 contract tests (10 inherited from advisor template + 11 developer-specific).
+
+**Run Tests**:
+```bash
+# Run all contract tests
+python3 -m pytest tests/ -v
+
+# Run developer-specific tests only
+python3 -m pytest tests/test_developer_contract.py -v
+
+# Expected: 21/21 passing
 ```
-You: Review this function [code shown]
 
-Coach: Great start! Let's level up your code together.
-
-**Strengths** (keep doing):
-✅ Clear variable names (readability: 8/10)
-✅ Edge cases handled (robustness: 7/10)
-
-**Level 1 improvements** (do this week):
-🎯 Extract magic number on line 42 to named constant
-🎯 Add early return on line 15 (reduce nesting)
-
-**Level 2 improvements** (next week):
-⭐ Consider memoization for expensive calculation
-⭐ Explore generator pattern for memory efficiency
-
-**Practice exercise**:
-Try refactoring lines 40-55 using the extract method pattern.
-Share your attempt and I'll provide feedback.
-
-**Progress tracker**: This is your 3rd review. Comparing to first
-review: readability improved 40%, edge case handling up 30%.
-Nice growth! 📈
-```
+**Test Coverage**:
+- Multi-repo discovery (auto-scan, configured mode, exclusions)
+- Standards precedence (repo-specific, agent-level, built-in)
+- Code analysis capabilities (quality, standards, debug, spec)
+- Advisory enforcement (no write operations outside .aget/)
 
 ---
 
 ## Documentation
 
-- **[AGENTS.md](AGENTS.md)** - Complete advisor configuration and protocols
-- **[Creating Advisor Agents](.aget/docs/CREATING_ADVISOR_AGENTS.md)** - Detailed instantiation guide
-- **[Advisor Capability Matrix](.aget/docs/ADVISOR_CAPABILITY_MATRIX.md)** - What advisors can/cannot do
-- **[Specification](.aget/specs/ADVISOR_TEMPLATE_SPEC_v1.0.yaml)** - Formal capability specification (27 capabilities)
-- **[Contract Tests](tests/)** - Automated validation (16 tests)
+Comprehensive guides for each pattern:
+
+- **docs/CODE_QUALITY_GUIDE.md** - Metrics, thresholds, interpretation
+- **docs/STANDARDS_CHECKING_GUIDE.md** - Precedence, customization, built-in standards
+- **docs/DEBUG_ASSISTANCE_GUIDE.md** - Error patterns, hypothesis ranking, investigation paths
+- **docs/SPEC_CONSISTENCY_GUIDE.md** - Spec formats, gap detection, EARS patterns
+- **docs/MULTI_REPO_CONFIGURATION.md** - Discovery modes, consistency analysis
 
 ---
 
-## Contract Tests
+## Customization
 
-Advisors include 16 contract tests that validate read-only boundaries:
+### Add Custom Standards
 
-```bash
-# Run all tests
-python3 -m pytest tests/ -v
+Create `.coding-standards.md` in your repository:
 
-# Run specific test suites
-python3 -m pytest tests/test_advisor_contract.py -v      # 7 advisor-specific tests
-python3 -m pytest tests/test_identity_contract.py -v     # 3 identity tests
-python3 -m pytest tests/test_wake_contract.py -v         # 6 wake protocol tests
+```markdown
+# Coding Standards
+
+Max line length: 120
+
+Rules:
+- Use descriptive variable names (>3 characters)
+- Document all public functions
+- Handle exceptions explicitly (no bare except)
 ```
 
-**Key validations**:
-- ✅ Instance type is "aget" (read-only)
-- ✅ All action capabilities disabled
-- ✅ Persona declared and valid
-- ✅ Advisory mode indicated in wake protocol
-- ✅ Role boundaries enforced
-- ✅ Identity consistency maintained
+The pattern will auto-detect and apply these standards.
 
-**Test coverage**: 16/16 tests passing required before deployment
+### Configure Multi-Repo Scanning
 
----
+Create `.aget/config/repos.yaml`:
 
-## Example Configurations
-
-See `.aget/examples/` for complete persona configurations:
-
-- `persona_teacher.json` - Educational guidance agent
-- `persona_mentor.json` - Career development advisor
-- `persona_consultant.json` - Technical decision consultant
-- `persona_guru.json` - Expert authority on best practices
-- `persona_coach.json` - Performance improvement coach
-
-Each example includes:
-- Complete version.json structure
-- Persona-specific configuration
-- Domain customization examples
-- Usage notes
+```yaml
+repos:
+  include:
+    - ~/projects/repo-1
+    - ~/projects/repo-2
+  exclude:
+    - vendor
+    - archive
+```
 
 ---
 
-## Advisory Protocols
+## Template Philosophy
 
-### Requirements Before Solutions (L114)
+**Advisory-Only**: This template follows the advisor pattern - it analyzes and recommends but never modifies code. All patterns return analysis results as dictionaries, not side effects.
 
-Advisors follow PAUSE, ASK, UNDERSTAND, RECOMMEND pattern:
+**Minimal Configuration**: Works out-of-the-box with built-in standards and auto-discovery. Customization is optional.
 
-1. **PAUSE** - Don't jump to solutions
-2. **ASK** - Gather context through clarifying questions
-3. **UNDERSTAND** - Validate requirements before recommending
-4. **RECOMMEND** - Present options with confidence levels and assumptions
+**Composable Patterns**: Each pattern is independent and focused. Combine patterns to build comprehensive analysis workflows.
 
-### Confidence Levels
-
-Every recommendation includes explicit confidence:
-
-- **High** - Clear requirements, known solution, low risk
-- **Medium** - Some ambiguity, multiple viable options
-- **Low** - Missing context, recommend more discovery
-
-### Role Boundaries (L95, L118)
-
-Advisors stay in advisory role by:
-- Using advisory framing language ("As advisor:", "Recommendation:")
-- Never saying "I'll do X" or "Let me create Y"
-- Acknowledging if they overstep ("I was acting rather than advising")
-- Recovering by presenting recommendations instead
-
----
-
-## Template Family
-
-Advisor template is part of the AGET template family:
-
-| Template | Purpose | Instance Type | Action Capability |
-|----------|---------|---------------|-------------------|
-| **template-worker-aget** | General-purpose work | `aget` or `AGET` | Configurable |
-| **template-supervisor-aget** | Fleet coordination | `AGET` | Yes (manages agents) |
-| **template-advisor-aget** | Advisory only | `aget` | No (read-only) |
-
-**Key difference**: Advisor template enforces read-only through:
-- Fixed `instance_type: "aget"` (cannot be changed)
-- Contract tests validating no action capabilities
-- Persona-based communication styles
-- Advisory protocol requirements
-
----
-
-## Framework Information
-
-**Organization**: [aget-framework](https://github.com/aget-framework)
-**Template**: [template-advisor-aget](https://github.com/aget-framework/template-advisor-aget)
-**Hub** (issues): [aget-aget](https://github.com/aget-framework/aget)
-
-**Version**: v2.7.0 "Portfolio Governance"
-- **New in v2.7.0**: Portfolio governance system, organizational memory patterns, learning discovery framework
-- **v2.6.0**: Configuration size management (40k limit), framework positioning, contract test validation
-- **v2.5.0**: Contract testing for advisor boundaries, persona differentiation framework, read-only enforcement validation, advisory protocol standards
-
-**Framework Learnings**:
-- L95: Advisor Role Enforcement Requirements
-- L114: Requirements Before Solutions (Advisor Mode)
-- L118: Advisor Role Clarity in Multi-Agent Sessions
-- D11: Terminology Disambiguation (Supervisor/Coordinator/Advisor)
-
----
-
-## Creating Advisor Instances
-
-See [.aget/docs/CREATING_ADVISOR_AGENTS.md](.aget/docs/CREATING_ADVISOR_AGENTS.md) for detailed guide.
-
-**Quick checklist**:
-1. Clone template to `my-{domain}-advisor-aget`
-2. Edit `.aget/version.json` (agent_name, persona, domain)
-3. Run contract tests: `python3 -m pytest tests/ -v`
-4. Verify all 16 tests pass
-5. Update AGENTS.md with domain-specific context
-6. Deploy to GitHub (optional, can stay local)
-
----
-
-## When to Use Advisor vs Worker
-
-**Use advisor template when**:
-- You want recommendations, not execution
-- You need analysis without system modification
-- You want persona-differentiated communication
-- You're building for governance/compliance scenarios
-
-**Use worker template when**:
-- You need action-taking capability
-- You want flexibility to enable/disable write operations
-- You're building general-purpose agents
-- You need both advisory and execution modes
-
-**Template conversion**: Worker → Advisor requires validation. Advisor → Worker requires architecture review (one-way door on action capability).
+**Educational**: Examples and documentation emphasize learning - showing how patterns work and why recommendations matter.
 
 ---
 
 ## Contributing
 
-Framework is in active development. Contribution guidelines coming in v2.5+.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for:
+- Development setup
+- Adding new patterns
+- Testing guidelines
+- Code style
+
+---
+
+## Version History
+
+- **v2.7.0** - Initial developer template release
+  - 5 analysis patterns (quality, standards, debug, spec, multi-repo)
+  - 21 contract tests
+  - 4 validated examples
+  - Comprehensive documentation
 
 ---
 
 ## License
 
-Apache 2.0
+MIT License - See [LICENSE](LICENSE) for details
+
+---
+
+## Related Templates
+
+- **template-advisor-aget** - General-purpose advisory template with persona-based guidance
+- **template-worker-aget** - Configurable action-taking agent template
+- **template-supervisor-aget** - Fleet coordination and multi-agent orchestration
 
 ---
 
 ## Support
 
-- **Issues**: [File to hub repo](https://github.com/aget-framework/aget/issues) with `[advisor-template]` prefix
-- **Documentation**: Start with [AGENTS.md](AGENTS.md)
+- **Issues**: https://github.com/aget-framework/template-developer-aget/issues
+- **Framework**: https://github.com/aget-framework
+- **Documentation**: See `docs/` directory
 
 ---
 
-*Aget Framework - Advisory agents with persona-based guidance*
+**Built with**: AGET Framework v2.7.0 | **Template Type**: Developer (Code Analysis Advisor)
