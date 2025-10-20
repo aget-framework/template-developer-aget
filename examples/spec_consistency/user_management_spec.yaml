@@ -1,0 +1,27 @@
+# User Management System Specification
+
+capabilities:
+  CAP-001:
+    description: User authentication and login
+    level: action
+    priority: high
+
+  CAP-002:
+    description: Password reset functionality
+    level: action
+    priority: high
+
+  CAP-003:
+    description: Email notification system
+    level: information
+    priority: medium
+
+  CAP-004:
+    description: User profile management
+    level: action
+    priority: medium
+
+  CAP-005:
+    description: Role-based access control
+    level: action
+    priority: high
