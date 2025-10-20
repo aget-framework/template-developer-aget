@@ -1,9 +1,9 @@
 # Template Developer AGET - Validation Report v2.7.0
 
 **Date**: 2025-10-20
-**Validator**: private-supervisor-AGET
+**Validator**: production-supervisor-aget
 **Template Version**: v2.7.0
-**Validation Instance**: my-code-analyzer-aget
+**Validation Instance**: validation-instance-aget
 
 ---
 
@@ -19,10 +19,10 @@ Template Developer AGET v2.7.0 successfully validated through 5 real-world code 
 
 **Approach**: Real scenario testing with actual repositories, errors, and specifications
 
-**Instance Created**: my-code-analyzer-aget (code analysis advisor)
+**Instance Created**: validation-instance-aget (code analysis advisor)
 
 **5 Validation Tasks**:
-1. Code Quality Analysis - private-github-aget (136 files, 18k LOC)
+1. Code Quality Analysis - production-aget-instance (136 files, 18k LOC)
 2. Standards Checking - template-developer-aget (107 files, 24k LOC)
 3. Debug Assistance - Real AttributeError from test suite
 4. Spec Consistency - COORDINATOR_SPEC_v3.0.yaml (35 capabilities)
@@ -64,8 +64,8 @@ Template Developer AGET v2.7.0 successfully validated through 5 real-world code 
 **Fix Applied**: Calculate per-file maintainability index and average across files
 
 **Before/After**:
-- **Before**: private-github-aget scored 0/100 (discouraging, not useful)
-- **After**: private-github-aget scored 34/100 (realistic for code with high complexity)
+- **Before**: production-aget-instance scored 0/100 (discouraging, not useful)
+- **After**: production-aget-instance scored 34/100 (realistic for code with high complexity)
 
 **Impact**: Metric now useful for identifying code quality issues rather than always returning 0
 
@@ -155,7 +155,7 @@ Template Developer AGET v2.7.0 is **production-ready**:
 
 ---
 
-**Validated By**: private-supervisor-AGET (meta-supervision mode)
+**Validated By**: production-supervisor-aget (meta-supervision mode)
 **Validation Quality**: 10/10 (L100 checkpoint discipline, real scenarios, comprehensive findings)
 
 **Template Status**: ✅ APPROVED FOR PRODUCTION USE
