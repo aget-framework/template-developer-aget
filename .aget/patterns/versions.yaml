@@ -1,0 +1,224 @@
+metadata:
+  registry_version: 1.0.0
+  last_updated: '2025-10-02'
+  total_patterns: 24
+  description: Central registry for pattern versioning across AGET ecosystem
+patterns:
+  backup/github_backup:
+    version: 1.0.0
+    category: backup
+    file: backup/github_backup.py
+    description: Backup GitHub issues to local storage
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  backup/restore_issues:
+    version: 1.0.0
+    category: backup
+    file: backup/restore_issues.py
+    description: Restore GitHub issues from local backup
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  documentation/external_analysis_prompt_template:
+    version: 1.0.0
+    category: documentation
+    file: documentation/external_analysis_prompt_template.md
+    description: Template for commissioning external documentation analysis
+    added: '2025-10-01'
+    last_modified: '2025-10-01'
+    breaking_changes: []
+  github/create_issue:
+    version: 1.0.0
+    category: github
+    file: github/create_issue.py
+    description: Create GitHub issues with auto-detection
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  github/list_issues:
+    version: 1.0.0
+    category: github
+    file: github/list_issues.py
+    description: List and filter GitHub issues
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  github/migrate_issues:
+    version: 1.0.0
+    category: github
+    file: github/migrate_issues.py
+    description: Migrate issues between GitHub projects
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  github/setup_labels:
+    version: 1.0.0
+    category: github
+    file: github/setup_labels.py
+    description: Setup standard GitHub labels
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  github/update_issue:
+    version: 1.0.0
+    category: github
+    file: github/update_issue.py
+    description: Update GitHub issue state and metadata
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  issues/parser:
+    version: 1.0.0
+    category: issues
+    file: issues/parser.py
+    description: Parse issue references from text
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  issues/validator:
+    version: 1.0.0
+    category: issues
+    file: issues/validator.py
+    description: Validate issue format and metadata
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  organization/check_docs:
+    version: 1.0.0
+    category: organization
+    file: organization/check_docs.py
+    description: Check documentation organization compliance
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  organization/organize_docs:
+    version: 1.0.0
+    category: organization
+    file: organization/organize_docs.py
+    description: Organize documentation into standard structure
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  planning/create_vs_update_decision:
+    version: 1.0.0
+    category: planning
+    file: planning/CREATE_VS_UPDATE_DECISION.md
+    description: Decision tree for create vs update operations
+    added: '2025-09-30'
+    last_modified: '2025-09-30'
+    breaking_changes: []
+  planning/nogoplan_template:
+    version: 1.0.0
+    category: planning
+    file: planning/NOGOPLAN_TEMPLATE.md
+    description: Template for go/no-go gated plans
+    added: '2025-09-30'
+    last_modified: '2025-09-30'
+    breaking_changes: []
+  quality/release_quality_check:
+    version: 1.0.0
+    category: quality
+    file: quality/release_quality_check.py
+    description: Pre-release quality validation
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  routing/agent_discovery:
+    version: 1.0.0
+    category: routing
+    file: routing/agent_discovery.py
+    description: Discover available AGETs and capabilities
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  routing/agent_registry:
+    version: 1.0.0
+    category: routing
+    file: routing/agent_registry.py
+    description: Maintain registry of AGET capabilities
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  routing/broadcast_upgrade:
+    version: 1.0.0
+    category: routing
+    file: routing/broadcast_upgrade.py
+    description: Broadcast pattern upgrades to all AGETs
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  routing/contribution_tracker:
+    version: 1.0.0
+    category: routing
+    file: routing/contribution_tracker.py
+    description: Track pattern contributions across AGETs
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  routing/install_to_agent:
+    version: 1.0.0
+    category: routing
+    file: routing/install_to_agent.py
+    description: Install pattern to specific AGET
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  routing/route_engine:
+    version: 1.0.0
+    category: routing
+    file: routing/route_engine.py
+    description: Route tasks to appropriate AGETs
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  routing/safe_notify_agent:
+    version: 1.0.0
+    category: routing
+    file: routing/safe_notify_agent.py
+    description: Safely notify AGETs of updates
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+  session/efficient_starts:
+    version: 1.0.1
+    category: session
+    file: session/EFFICIENT_STARTS.md
+    description: Efficient session startup patterns
+    added: '2025-09-30'
+    last_modified: '2025-10-02'
+    breaking_changes: []
+  validation/validate_vocabulary:
+    version: 1.0.0
+    category: validation
+    file: validation/validate_vocabulary.py
+    description: Validate controlled vocabulary compliance
+    added: '2025-09-27'
+    last_modified: '2025-09-27'
+    breaking_changes: []
+dependencies:
+  routing/route_engine:
+    requires:
+    - routing/agent_registry: ^1.0.0
+    - routing/agent_discovery: ^1.0.0
+  routing/broadcast_upgrade:
+    requires:
+    - routing/agent_registry: ^1.0.0
+    - routing/safe_notify_agent: ^1.0.0
+  routing/install_to_agent:
+    requires:
+    - routing/agent_registry: ^1.0.0
+  github/migrate_issues:
+    requires:
+    - github/list_issues: ^1.0.0
+    - github/create_issue: ^1.0.0
+  backup/restore_issues:
+    requires:
+    - github/create_issue: ^1.0.0
+compatibility:
+  minimum_aget_version: 2.2.0
+  version_format: MAJOR.MINOR.PATCH
+  semver_rules:
+    major: Breaking changes - migration required
+    minor: New features - backward compatible
+    patch: Bug fixes - backward compatible

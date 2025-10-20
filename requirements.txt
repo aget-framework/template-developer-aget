@@ -1,0 +1,20 @@
+# CLI Agent Template - Python Dependencies
+# Minimum Python version: 3.8
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Code quality
+black>=22.0.0
+ruff>=0.1.0
+mypy>=1.0.0
+
+# Documentation
+pyyaml>=6.0
+markdown>=3.0.0
+
+# Utilities
+click>=8.0.0
+rich>=13.0.0
+gitpython>=3.1.0
