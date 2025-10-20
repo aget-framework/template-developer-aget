@@ -329,6 +329,7 @@ def analyze(input_data: Dict[str, Any]) -> Dict[str, Any]:
     # Analyze complexity
     all_functions = []
     total_loc = 0
+    file_maintainability_indices = []  # Per-file MI for proper averaging
 
     for file_path in files:
         functions = analyze_function_complexity(file_path)
@@ -336,7 +337,15 @@ def analyze(input_data: Dict[str, Any]) -> Dict[str, Any]:
 
         # Count lines of code
         with open(file_path) as f:
-            total_loc += sum(1 for line in f if line.strip() and not line.strip().startswith("#"))
+            file_loc = sum(1 for line in f if line.strip() and not line.strip().startswith("#"))
+            total_loc += file_loc
+
+        # Calculate per-file maintainability (proper approach)
+        file_funcs = [f for f in functions if f["file"] == os.path.basename(file_path)]
+        if file_funcs:
+            file_complexity = sum(f["complexity"] for f in file_funcs) / len(file_funcs)
+            file_mi = calculate_maintainability_index(file_complexity, file_loc)
+            file_maintainability_indices.append(file_mi)
 
     # Calculate metrics
     complexities = [f["complexity"] for f in all_functions] if all_functions else [1]
@@ -349,8 +358,8 @@ def analyze(input_data: Dict[str, Any]) -> Dict[str, Any]:
         reverse=True
     )[:5]  # Top 5 most complex
 
-    # Maintainability
-    maintainability_index = calculate_maintainability_index(avg_complexity, total_loc)
+    # Maintainability - average per-file MI (not whole-repo MI)
+    maintainability_index = int(sum(file_maintainability_indices) / len(file_maintainability_indices)) if file_maintainability_indices else 0
     if maintainability_index >= 85:
         mi_status = "excellent"
     elif maintainability_index >= 65:
