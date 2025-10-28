@@ -304,7 +304,9 @@ Recommendations:
 
 **Collaboration**: Works with template-spec-engineer-aget specs
 
-## Wake Up Protocol
+## Session Management Protocols
+
+### Wake Up Protocol
 
 When user says "wake up" or "hey":
 - Read `.aget/version.json` (agent identity)
@@ -336,7 +338,41 @@ template-developer-aget v2.7.0 (Code Analysis Advisor)
 Ready for code analysis.
 ```
 
-## Wind Down Protocol
+### Study Up Protocol
+
+When user says "study up" or "study":
+- **Primary**: Run `python3 patterns/documentation/smart_docs_briefing.py` (if exists)
+- **Fallback**: Execute deep context loading sequence
+- Reads: Current documentation, recent sessions, checkpoints, analysis state
+- **Duration**: ~30 seconds (investment in session quality)
+- **Purpose**: Deep orientation before complex analysis work
+
+**Fallback sequence** (if smart tooling unavailable):
+1. Read `.aget/version.json` → Extract version, role, domain, persona
+2. Read AGENTS.md sections → Focus: Project Context, Code Analysis Advisor Role
+3. Read most recent session → `ls -t sessions/*.md 2>/dev/null | head -1`
+4. Read recent analysis → `ls -t .aget/analysis/*.md 2>/dev/null | head -1`
+5. Check multi-repo configuration (if exists)
+6. Load custom coding standards (if configured)
+7. Synthesize and present context
+
+**Output format**:
+```
+✅ Context loaded.
+
+Recent Work: [last session or analysis summary]
+Current Focus: [active analysis or project state]
+Configuration: [multi-repo: X repos, standards: Y loaded]
+Pending: [analysis checkpoints, blockers, or "None"]
+
+Ready for code analysis.
+```
+
+**Two-tier orientation**:
+- **"wake up"** → Quick identity check (~2 seconds)
+- **"study up"** → Deep context loading (~30 seconds)
+
+### Wind Down Protocol
 
 When user says "wind down" or "save work":
 - Commit analysis findings to `.aget/analysis/` (scoped write)
@@ -351,6 +387,12 @@ When user says "wind down" or "save work":
 - ❌ Cannot write: Codebase files (read-only advisor)
 
 Note: Advisor uses scoped writes for internal state only (v2.6.0+)
+
+### Sign Off Protocol
+
+When user says "sign off" or "all done":
+- Quick save and exit
+- No questions
 
 ## Available Patterns
 
