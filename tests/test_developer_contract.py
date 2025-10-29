@@ -368,7 +368,7 @@ def test_code_quality_analysis_capability(test_code_with_violations):
     assert test_code_with_violations.exists(), "Test code file not created"
 
     # Verify pattern file exists
-    pattern_file = Path(".aget/patterns/analysis/code_quality.py")
+    pattern_file = Path(__file__).parent.parent / ".aget/patterns/analysis/code_quality.py"
     assert pattern_file.exists(), \
         f"Code quality pattern not found at {pattern_file}"
 
@@ -394,7 +394,7 @@ def test_standards_compliance_checking(test_code_with_violations):
     assert test_code_with_violations.exists(), "Test code file not created"
 
     # Verify pattern file exists
-    pattern_file = Path(".aget/patterns/analysis/standards_check.py")
+    pattern_file = Path(__file__).parent.parent / ".aget/patterns/analysis/standards_check.py"
     assert pattern_file.exists(), \
         f"Standards check pattern not found at {pattern_file}"
 
@@ -420,7 +420,7 @@ def test_spec_to_code_consistency(test_spec_file, test_implementation_partial):
     assert test_implementation_partial.exists(), "Test implementation not created"
 
     # Verify pattern file exists
-    pattern_file = Path(".aget/patterns/analysis/spec_consistency.py")
+    pattern_file = Path(__file__).parent.parent / ".aget/patterns/analysis/spec_consistency.py"
     assert pattern_file.exists(), \
         f"Spec consistency pattern not found at {pattern_file}"
 
@@ -454,7 +454,7 @@ def test_debugging_assistance_capability():
     error patterns and generate fix strategies.
     """
     # Verify pattern file exists
-    pattern_file = Path(".aget/patterns/analysis/debug_assist.py")
+    pattern_file = Path(__file__).parent.parent / ".aget/patterns/analysis/debug_assist.py"
     assert pattern_file.exists(), \
         f"Debug assist pattern not found at {pattern_file}"
 
@@ -479,7 +479,7 @@ def test_analysis_output_is_recommendations():
     Enforces consultant persona requirement.
     """
     # Read AGENTS.md
-    agents_md = Path("AGENTS.md")
+    agents_md = Path(__file__).parent.parent / "AGENTS.md"
     assert agents_md.exists(), "AGENTS.md not found"
 
     content = agents_md.read_text().lower()
@@ -491,7 +491,7 @@ def test_analysis_output_is_recommendations():
         f"AGENTS.md should use advisory language, found only: {found_advisory}"
 
     # Verify persona is consultant
-    version_file = Path(".aget/version.json")
+    version_file = Path(__file__).parent.parent / ".aget/version.json"
     with open(version_file) as f:
         data = json.load(f)
         assert data.get("persona") == "consultant", \
@@ -515,7 +515,7 @@ def test_all_advisor_contract_tests_exist():
     Note: Actual count is 10 inherited tests (spec estimated 16,
     but advisor template v2.6.0 has 10 core tests).
     """
-    advisor_contract_file = Path("tests/test_advisor_contract.py")
+    advisor_contract_file = Path(__file__).parent / "test_advisor_contract.py"
     assert advisor_contract_file.exists(), \
         "Advisor contract tests not found (should be inherited from template)"
 
