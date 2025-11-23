@@ -529,6 +529,78 @@ def test_all_advisor_contract_tests_exist():
 
 
 # ============================================================================
+# Category 8: Memory Layer Tests (v2.9+) (6 tests)
+# ============================================================================
+
+def test_memory_directory_exists():
+    """Test 27: Verify .memory/ directory exists for Layer 4 relationship state (v2.9+)."""
+    memory_dir = Path(".memory")
+    assert memory_dir.exists(), \
+        "Developer advisor agents must have .memory/ directory at root (Layer 4 - v2.9 standard)"
+    assert memory_dir.is_dir(), ".memory/ must be a directory"
+
+
+def test_memory_clients_directory_exists():
+    """Test 28: Verify .memory/clients/ for client relationship tracking (v2.9+)."""
+    clients_dir = Path(".memory/clients")
+    assert clients_dir.exists(), \
+        ".memory/clients/ directory must exist for client relationship state"
+    assert clients_dir.is_dir(), ".memory/clients/ must be a directory"
+
+
+def test_memory_engagements_directory_exists():
+    """Test 29: Verify .memory/engagements/ for engagement tracking (v2.9+)."""
+    engagements_dir = Path(".memory/engagements")
+    assert engagements_dir.exists(), \
+        ".memory/engagements/ directory must exist for engagement state"
+    assert engagements_dir.is_dir(), ".memory/engagements/ must be a directory"
+
+
+def test_sessions_at_root():
+    """Test 30: Sessions must be at root (sessions/), not in .aget/sessions/ (v2.9 standard)."""
+    sessions_root = Path("sessions")
+    sessions_aget = Path(".aget/sessions")
+
+    # sessions/ at root is recommended (not strictly required for new templates)
+    # This is more of a migration check, templates start fresh
+    # But we document it as the standard location
+
+    # If .aget/sessions/ exists with files, that's non-compliant
+    if sessions_aget.exists() and sessions_aget.is_dir():
+        session_files = list(sessions_aget.glob("SESSION_*.md"))
+        assert len(session_files) == 0, \
+            "Sessions must be in sessions/ at root, not .aget/sessions/ (v2.9 standard)"
+
+
+def test_agents_md_documents_memory():
+    """Test 31: AGENTS.md must document .memory/ usage for developer advisors (v2.9+)."""
+    agents_md = Path("AGENTS.md")
+    assert agents_md.exists(), "AGENTS.md not found"
+
+    content = agents_md.read_text()
+    assert ".memory/" in content, \
+        "AGENTS.md must document .memory/ directory (Layer 4 developer advisor state)"
+    assert "clients/" in content or "engagements/" in content, \
+        "AGENTS.md must document .memory/clients/ and .memory/engagements/ subdirectories"
+
+
+def test_memory_readme_exists():
+    """Test 32: Verify .memory/README.md with usage guidelines (v2.9+)."""
+    memory_readme = Path(".memory/README.md")
+    assert memory_readme.exists(), \
+        ".memory/README.md must exist with usage guidelines"
+
+    # Verify it has some content
+    content = memory_readme.read_text()
+    assert len(content) > 500, \
+        ".memory/README.md must have substantial usage documentation (≥500 chars)"
+    assert "clients/" in content, \
+        ".memory/README.md must document clients/ subdirectory"
+    assert "engagements/" in content, \
+        ".memory/README.md must document engagements/ subdirectory"
+
+
+# ============================================================================
 # Test Summary
 # ============================================================================
 

@@ -181,6 +181,127 @@ Agent:
 
 **See**: `docs/STANDARDS_CHECKING_GUIDE.md` for detailed usage
 
+## Directory Structure
+
+Standard code analysis advisor structure:
+
+```
+my-{domain}-developer-aget/
+├── .aget/
+│   ├── version.json          # Agent identity + configuration
+│   ├── patterns/             # Analysis patterns
+│   ├── standards/            # Custom coding standards
+│   ├── evolution/            # Learning and decision tracking
+│   └── checkpoints/          # State snapshots
+├── .memory/                  # Layer 4: Advisor relationship state (v2.9+)
+│   ├── clients/              # Client-specific context
+│   └── engagements/          # Engagement tracking
+├── sessions/                 # Layer 5: Session logs and work artifacts
+├── AGENTS.md                 # This file (agent configuration)
+├── CLAUDE.md                 # Symlink to AGENTS.md
+├── tests/
+│   ├── test_identity_contract.py
+│   ├── test_wake_contract.py
+│   └── test_developer_contract.py
+├── workspace/                # Private workspace for analysis
+└── README.md                 # Public-facing documentation
+```
+
+---
+
+## .memory/ Directory (Layer 4 - Advisors Only)
+
+**Purpose**: Store advisor-specific relationship state, client context, and engagement tracking.
+
+**New in v2.9**: Formal Layer 4 for advisor agents to maintain ongoing client relationships and engagement state separate from framework knowledge (.aget/) and work product (sessions/).
+
+### The .memory/ Boundary Test
+
+**Question**: Does this represent ongoing relationship state with a specific client/engagement?
+
+- **YES** → `.memory/` (client context, engagement tracking, relationship history)
+- **NO** → `.aget/` (framework knowledge, process learnings) or `sessions/` (work product, deliverables)
+
+### What Belongs in .memory/
+
+✅ **Client relationship state:**
+- Client background, codebase preferences, communication style
+- Code quality goals, standards preferences
+- Interaction history, key insights from past analyses
+
+✅ **Engagement tracking:**
+- Code review engagement scope, objectives
+- Progress tracking (quality improvements over time)
+- Engagement-specific standards and guidelines
+
+✅ **Relationship continuity:**
+- What worked/didn't work with this client's codebase
+- Client-specific patterns discovered
+- Historical baselines for quality metrics
+
+### What Does NOT Belong in .memory/
+
+❌ **Framework knowledge** → Store in `.aget/evolution/`:
+- Process learnings that apply broadly
+- Analysis methodology patterns
+- Tool usage patterns
+- General best practices
+
+❌ **Work product** → Store in `sessions/`:
+- Session logs and conversation records
+- Code quality reports
+- Analysis findings
+- Recommendations for specific reviews
+
+❌ **Configuration** → Store in `.aget/`:
+- Agent identity and version
+- Capability declarations
+- Coding standards (unless client-specific)
+
+### Structure
+
+```
+.memory/
+├── clients/              # Client-specific context and relationship state
+│   ├── {client_id}/     # Per-client directory
+│   │   ├── context.yaml # Client codebase info, preferences, goals
+│   │   ├── history.md   # Analysis history, key insights
+│   │   └── notes/       # Session notes, observations
+│   └── .gitkeep
+├── engagements/          # Engagement-specific state
+│   ├── {engagement_id}/ # Per-engagement directory
+│   │   ├── brief.yaml   # Engagement scope, objectives
+│   │   ├── progress.md  # Quality tracking, milestones
+│   │   └── artifacts/   # Engagement-specific deliverables
+│   └── .gitkeep
+└── README.md            # Usage guidelines (see .memory/README.md)
+```
+
+### Privacy Considerations
+
+**If your advisor handles sensitive information**, consider:
+- Adding sensitive paths to `.gitignore`
+- Using placeholders in examples (`{client_id}`, `{engagement_id}`)
+- Following your organization's data governance standards
+- Establishing data retention policies
+
+### When to Use .memory/
+
+**Use .memory/** when you need to:
+- Track ongoing code quality relationships across multiple sessions
+- Maintain engagement state and quality progress
+- Preserve client-specific standards and preferences
+- Store relationship history that informs future analyses
+
+**Don't use .memory/** for:
+- Single-session code reviews (use `sessions/` only)
+- Framework improvements (use `.aget/evolution/`)
+- General coding standards (use `.aget/standards/`)
+
+**See also**: `.memory/README.md` for detailed usage guidelines and examples.
+
+---
+
 ## Analysis Workflows
 
 ### Code Quality Assessment
