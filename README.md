@@ -4,7 +4,7 @@
 
 Transform your codebase into insights with an AI advisor specialized in code analysis. Provides expert recommendations on code quality, standards compliance, debugging strategies, and spec-to-code consistency - without modifying your code.
 
-**Current Version**: v2.7.0
+**Current Version**: v2.9.0
 
 **Template Type**: Developer (Code Analysis Advisor)
 
@@ -351,7 +351,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 ## Version History
 
-- **v2.7.0** - Initial developer template release
+- **v2.9.0** - Initial developer template release
   - 5 analysis patterns (quality, standards, debug, spec, multi-repo)
   - 21 contract tests
   - 4 validated examples
@@ -416,4 +416,4 @@ To upgrade to Apache 2.0 for patent protection benefits, see the upgrade guide i
 
 ---
 
-**Built with**: AGET Framework v2.7.0 | **Template Type**: Developer (Code Analysis Advisor)
+**Built with**: AGET Framework v2.9.0 | **Template Type**: Developer (Code Analysis Advisor)
