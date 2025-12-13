@@ -571,8 +571,8 @@ def test_memory_engagements_directory_exists():
 
 def test_sessions_at_root():
     """Test 30: Sessions must be at root (sessions/), not in .aget/sessions/ (v2.9 standard)."""
-    sessions_root = Path("sessions")
-    sessions_aget = Path(__file__).parent.parent / ".aget/sessions")
+    sessions_root = Path(__file__).parent.parent / "sessions"
+    sessions_aget = Path(__file__).parent.parent / ".aget/sessions"
 
     # sessions/ at root is recommended (not strictly required for new templates)
     # This is more of a migration check, templates start fresh
