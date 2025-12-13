@@ -6,6 +6,8 @@ Tests multi-repo awareness, standards precedence, and analysis capabilities.
 
 Part of AGET framework developer template validation (v2.7.0).
 Total: 10 new tests + 16 inherited tests from advisor template = 26 tests
+
+v2.10.0: Added template context detection - instance-only tests skipped on templates
 """
 
 import pytest
@@ -14,6 +16,14 @@ import os
 import tempfile
 import shutil
 from pathlib import Path
+from conftest import is_template_context
+
+
+# Skip reason for instance-only tests (memory layer tests)
+SKIP_TEMPLATE = pytest.mark.skipif(
+    is_template_context(),
+    reason="Instance-only test: .memory/ directory is created at instantiation"
+)
 
 
 # ============================================================================
@@ -532,6 +542,7 @@ def test_all_advisor_contract_tests_exist():
 # Category 8: Memory Layer Tests (v2.9+) (6 tests)
 # ============================================================================
 
+@SKIP_TEMPLATE
 def test_memory_directory_exists():
     """Test 27: Verify .memory/ directory exists for Layer 4 relationship state (v2.9+)."""
     memory_dir = Path(".memory")
@@ -540,6 +551,7 @@ def test_memory_directory_exists():
     assert memory_dir.is_dir(), ".memory/ must be a directory"
 
 
+@SKIP_TEMPLATE
 def test_memory_clients_directory_exists():
     """Test 28: Verify .memory/clients/ for client relationship tracking (v2.9+)."""
     clients_dir = Path(".memory/clients")
@@ -548,6 +560,7 @@ def test_memory_clients_directory_exists():
     assert clients_dir.is_dir(), ".memory/clients/ must be a directory"
 
 
+@SKIP_TEMPLATE
 def test_memory_engagements_directory_exists():
     """Test 29: Verify .memory/engagements/ for engagement tracking (v2.9+)."""
     engagements_dir = Path(".memory/engagements")
@@ -572,6 +585,7 @@ def test_sessions_at_root():
             "Sessions must be in sessions/ at root, not .aget/sessions/ (v2.9 standard)"
 
 
+@SKIP_TEMPLATE
 def test_agents_md_documents_memory():
     """Test 31: AGENTS.md must document .memory/ usage for developer advisors (v2.9+)."""
     agents_md = Path("AGENTS.md")
@@ -584,6 +598,7 @@ def test_agents_md_documents_memory():
         "AGENTS.md must document .memory/clients/ and .memory/engagements/ subdirectories"
 
 
+@SKIP_TEMPLATE
 def test_memory_readme_exists():
     """Test 32: Verify .memory/README.md with usage guidelines (v2.9+)."""
     memory_readme = Path(".memory/README.md")
