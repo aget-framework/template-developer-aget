@@ -1,7 +1,7 @@
 {
-  "aget_version": "2.10.0",
+  "aget_version": "2.11.0",
   "created": "2025-10-19",
-  "updated": "2025-12-13",
+  "updated": "2025-12-24",
   "migrated_to_v2.10.0": "2025-12-13",
   "template": "developer",
   "tier": "specialized",
@@ -131,5 +131,8 @@
     ],
     "deprecated": []
   },
-  "notes": "v2.7.0 Developer Template - Code analysis advisor specialized in multi-repository code quality assessment, coding standards compliance, debugging assistance, and spec-to-code consistency detection. Consultant persona for evidence-based analysis with quantitative ratings. Scoped write permissions for analysis results (.aget/analysis/**). Based on template-advisor-aget v2.7.0."
+  "notes": "v2.7.0 Developer Template - Code analysis advisor specialized in multi-repository code quality assessment, coding standards compliance, debugging assistance, and spec-to-code consistency detection. Consultant persona for evidence-based analysis with quantitative ratings. Scoped write permissions for analysis results (.aget/analysis/**). Based on template-advisor-aget v2.7.0.",
+  "migration_history": [
+    "v2.10.0 -> v2.11.0: 2025-12-24 (Memory Architecture + L352 Traceability + Version Migration)"
+  ]
 }
