@@ -1,6 +1,6 @@
 # Agent Configuration - Code Analysis Advisor
 
-@aget-version: 2.7.0
+@aget-version: 2.12.0
 
 ## Agent Compatibility
 This configuration follows the AGENTS.md open-source standard for universal agent configuration.
