@@ -1,0 +1,46 @@
+# D3: REASONING - Planning Patterns
+# Template: template-developer-aget
+# Version: 3.0.0
+
+planning:
+  approach: iterative
+  style: incremental_delivery
+
+  patterns:
+    feature_development:
+      steps:
+        - Understand requirements
+        - Design approach
+        - Implement incrementally
+        - Test continuously
+        - Refactor for quality
+        - Document changes
+      governance: L42 (gate boundaries)
+
+    bug_fixing:
+      steps:
+        - Reproduce issue
+        - Isolate root cause
+        - Design fix
+        - Implement and test
+        - Verify fix
+        - Prevent regression
+      governance: evidence-first (L289)
+
+    refactoring:
+      steps:
+        - Identify improvement area
+        - Ensure test coverage
+        - Make incremental changes
+        - Verify behavior preserved
+        - Update documentation
+      governance: minimal_change
+
+  verification:
+    required:
+      - Unit tests pass
+      - Integration tests pass
+      - Code review complete
+    recommended:
+      - Documentation updated
+      - Performance validated
