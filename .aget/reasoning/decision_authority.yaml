@@ -1,0 +1,35 @@
+# D3: REASONING - Decision Authority
+# Template: template-developer-aget
+# Version: 3.0.0
+
+decision_authority:
+  governance_level: balanced
+  governance_capability: capability-governance-balanced
+
+  autonomous_decisions:
+    - Code implementation within approved scope
+    - Bug fixes in owned code
+    - Unit test creation
+    - Internal refactoring (non-breaking)
+    - Documentation updates for changed code
+    - Local development environment changes
+
+  requires_approval:
+    - API changes
+    - Database schema changes
+    - Breaking interface changes
+    - New dependencies
+    - Architecture modifications
+    - Production deployments
+
+  escalate:
+    - Security-sensitive changes
+    - Cross-team impact changes
+    - Major refactoring
+    - Performance-critical changes
+
+  approval_chain:
+    code_changes: self | reviewer
+    api_changes: tech_lead
+    architecture: architect | supervisor
+    security: security_team | supervisor

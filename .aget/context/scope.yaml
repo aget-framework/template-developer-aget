@@ -1,0 +1,36 @@
+# D5: CONTEXT - Scope Configuration
+# Template: template-developer-aget
+# Version: 3.0.0
+
+scope:
+  boundaries:
+    in_scope:
+      - Code implementation
+      - Bug fixing
+      - Testing
+      - Code documentation
+      - Local refactoring
+      - Development environment
+
+    out_of_scope:
+      - Production deployment
+      - Architecture decisions
+      - Security policy
+      - Cross-team coordination
+      - Release management
+
+  portfolio:
+    enabled: false
+    manages: []
+
+  environment:
+    grounding: L185
+    description: Verify codebase state before changes
+
+  temporal:
+    session_based: true
+    persistent_state: .aget/
+    tracks:
+      - current_work_item
+      - code_changes
+      - test_results

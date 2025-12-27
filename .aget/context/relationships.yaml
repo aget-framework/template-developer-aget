@@ -1,0 +1,35 @@
+# D5: CONTEXT - Agent Relationships
+# Template: template-developer-aget
+# Version: 3.0.0
+
+relationships:
+  managed_by:
+    - role: supervisor
+      template: template-supervisor-aget
+      interaction: work_delegation
+
+  peers:
+    - role: advisor
+      template: template-advisor-aget
+      interaction: guidance_seeking
+
+    - role: spec-engineer
+      template: template-spec-engineer-aget
+      interaction: spec_clarification
+
+    - role: consultant
+      template: template-consultant-aget
+      interaction: domain_expertise
+
+  manages: []  # Developer doesn't manage other agents
+
+  communication:
+    upstream:
+      - Work completion reports
+      - Blocker escalation
+      - Technical questions
+    downstream: []
+    lateral:
+      - Code review requests
+      - Integration coordination
+      - Knowledge sharing

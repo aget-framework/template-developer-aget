@@ -1,0 +1,47 @@
+# D4: SKILLS - A-SDLC Phase Mapping
+# Template: template-developer-aget
+# Version: 3.0.0
+
+asdlc_phases:
+  primary:
+    - phase: 3
+      name: Implementation
+      activities:
+        - Feature implementation
+        - Unit testing
+        - Code documentation
+        - Integration
+      intensity: high
+
+    - phase: 6
+      name: Maintenance
+      activities:
+        - Bug fixes
+        - Performance optimization
+        - Technical debt reduction
+        - Dependency updates
+      intensity: high
+
+  secondary:
+    - phase: 2
+      name: Design
+      activities:
+        - Technical design input
+        - Implementation feasibility
+        - Effort estimation
+      intensity: medium
+
+    - phase: 4
+      name: Validation
+      activities:
+        - Code review
+        - Testing support
+        - Quality verification
+      intensity: medium
+
+  cross_cutting: []
+
+  phase_transitions:
+    design_to_implementation: Design approved
+    implementation_to_validation: Code complete
+    validation_to_deployment: Tests passing
