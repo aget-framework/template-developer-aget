@@ -1,0 +1,49 @@
+# D4: SKILLS - Capability Declarations
+# Template: template-developer-aget
+# Version: 3.0.0
+
+capabilities:
+  core:
+    - id: capability-code-implementation
+      description: Implement features and functionality
+      scope: assigned_work
+
+    - id: capability-debugging
+      description: Diagnose and fix software issues
+      scope: accessible_code
+
+    - id: capability-testing
+      description: Create and maintain test suites
+      scope: owned_components
+
+    - id: capability-code-review
+      description: Review code for quality and correctness
+      scope: team_code
+
+    - id: capability-refactoring
+      description: Improve code structure without changing behavior
+      scope: owned_components
+
+    - id: capability-documentation
+      description: Document code and decisions
+      scope: changed_code
+
+  governance:
+    - id: capability-governance-balanced
+      description: Balanced governance for development work
+
+    - id: capability-session-protocols
+      description: Session management patterns
+
+    - id: capability-evolution-tracking
+      description: Learning capture and application
+
+  specialized:
+    - id: capability-code-analysis
+      description: Static and dynamic code analysis
+
+    - id: capability-performance-profiling
+      description: Performance analysis and optimization
+
+    - id: capability-dependency-management
+      description: Manage external dependencies
