@@ -500,12 +500,15 @@ def test_analysis_output_is_recommendations():
     assert len(found_advisory) >= 2, \
         f"AGENTS.md should use advisory language, found only: {found_advisory}"
 
-    # Verify persona is consultant
+    # Verify template type (v3.0) or persona (v2.x)
     version_file = Path(__file__).parent.parent / ".aget/version.json"
     with open(version_file) as f:
         data = json.load(f)
-        assert data.get("persona") == "consultant", \
-            "Persona should be 'consultant' for code analysis advisor"
+        # v3.0 uses template field, v2.x uses persona field
+        template = data.get("template")
+        persona = data.get("persona")
+        assert template == "developer" or persona == "consultant", \
+            f"Expected template='developer' (v3.0) or persona='consultant' (v2.x), got template={template}, persona={persona}"
 
     # Should NOT use imperative commands excessively
     # (Some imperative is OK for pattern instructions, but not analysis output)
@@ -513,29 +516,23 @@ def test_analysis_output_is_recommendations():
 
 
 # ============================================================================
-# Inherited Tests from Advisor Template (16 tests)
+# v3.0 Template Validation Tests
 # ============================================================================
 
-def test_all_advisor_contract_tests_exist():
-    """Meta-test: Verify inherited advisor tests are available.
+def test_template_type_is_developer():
+    """Verify template type is 'developer' in v3.0 schema.
 
-    The actual tests are in test_advisor_contract.py and are run
-    automatically by pytest. This test verifies the file exists.
-
-    Note: Actual count is 10 inherited tests (spec estimated 16,
-    but advisor template v2.6.0 has 10 core tests).
+    v3.0 uses template field instead of v2.x persona/roles fields.
     """
-    advisor_contract_file = Path(__file__).parent / "test_advisor_contract.py"
-    assert advisor_contract_file.exists(), \
-        "Advisor contract tests not found (should be inherited from template)"
+    version_file = Path(__file__).parent.parent / ".aget/version.json"
+    with open(version_file) as f:
+        data = json.load(f)
 
-    # Count test functions in advisor contract file
-    content = advisor_contract_file.read_text()
-    test_count = content.count("def test_")
-
-    # Should have at least 10 tests (advisor template v2.6.0 standard)
-    assert test_count >= 10, \
-        f"Expected at least 10 inherited tests, found {test_count}"
+    # v3.0 templates must have template field
+    if data.get("manifest_version", "").startswith("3."):
+        assert "template" in data, "v3.0 templates must have 'template' field"
+        assert data["template"] == "developer", \
+            f"Expected template='developer', got {data.get('template')}"
 
 
 # ============================================================================
