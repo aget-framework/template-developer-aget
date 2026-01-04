@@ -4,7 +4,7 @@
 
 Transform your codebase into insights with an AI advisor specialized in code analysis. Provides expert recommendations on code quality, standards compliance, debugging strategies, and spec-to-code consistency - without modifying your code.
 
-**Current Version**: v2.9.0
+**Current Version**: v3.1.0
 
 **Template Type**: Developer (Code Analysis Advisor)
 
@@ -376,10 +376,10 @@ See: [Full specification](https://github.com/aget-framework/aget/tree/main/specs
 
 ## Version History
 
-- **v3.0.0** - 5D Composition Architecture
+- **v3.1.0** - 5D Composition Architecture
   - Manifest v3 schema, 5D directories
   - 168 contract tests
-- **v2.9.0** - Initial developer template release
+- **v3.1.0** - Initial developer template release
   - 5 analysis patterns (quality, standards, debug, spec, multi-repo)
 
 ---
@@ -441,4 +441,4 @@ To upgrade to Apache 2.0 for patent protection benefits, see the upgrade guide i
 
 ---
 
-**Built with**: AGET Framework v2.9.0 | **Template Type**: Developer (Code Analysis Advisor)
+**Built with**: AGET Framework v3.1.0 | **Template Type**: Developer (Code Analysis Advisor)
