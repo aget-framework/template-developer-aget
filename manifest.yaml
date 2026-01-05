@@ -8,7 +8,7 @@ template:
   name: template-developer-aget
   archetype: Developer
   description: Development template for implementation and coding tasks
-  version: 3.1.0
+  version: 3.2.1
   created: "2025-12-27"
   author: private-aget-framework-AGET
   inherits_from: template-worker-aget
