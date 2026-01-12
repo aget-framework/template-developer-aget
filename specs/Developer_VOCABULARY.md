@@ -1,11 +1,13 @@
 # Developer Domain Vocabulary
 
-**Version**: 1.0.0
+**Version**: 1.1.0
 **Status**: Active
 **Owner**: template-developer-aget
 **Created**: 2026-01-10
+**Updated**: 2026-01-11
 **Scope**: Template vocabulary (DRIVES instance behavior per L481)
 **Archetype**: Developer
+**Template**: VOCABULARY_TEMPLATE_v3.3
 
 ---
 
@@ -90,6 +92,37 @@ Technical_Debt:
   skos:broader: Developer_Core_Concepts
   skos:inScheme: Developer_Vocabulary
 ```
+
+---
+
+## Concept Relationships
+
+```yaml
+relationships:
+  hierarchical:
+    - parent: Developer_Core_Concepts
+      children: [Code_Quality, Implementation, Testing, Refactoring, Technical_Debt]
+
+  associative:
+    - subject: Implementation
+      predicate: skos:related
+      object: Testing
+    - subject: Refactoring
+      predicate: skos:related
+      object: Technical_Debt
+```
+
+---
+
+## EKO Cross-References
+
+Per AGET_EXECUTABLE_KNOWLEDGE_SPEC.md:
+
+| Vocabulary Term | EKO Term | Relationship |
+|-----------------|----------|--------------|
+| Code_Quality | EKO:Quality_Attribute | skos:exactMatch |
+| Implementation | EKO:Development_Process | skos:closeMatch |
+| Technical_Debt | EKO:Technical_Constraint | skos:broadMatch |
 
 ---
 
