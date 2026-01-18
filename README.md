@@ -4,7 +4,7 @@
 
 Transform your codebase into insights with an AI advisor specialized in code analysis. Provides expert recommendations on code quality, standards compliance, debugging strategies, and spec-to-code consistency - without modifying your code.
 
-**Current Version**: v3.3.0
+**Current Version**: v3.4.0 "Session Skills Maturity"
 
 **Template Type**: Developer (Code Analysis Advisor)
 
