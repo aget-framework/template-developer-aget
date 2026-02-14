@@ -1,0 +1,429 @@
+# ONTOLOGY: Developer Archetype v1.0
+# SKOS-aligned concept definitions for software development and code management
+#
+# Archetype: developer
+# Created: 2026-02-14
+# Author: private-aget-framework-AGET
+# Format: SKOS-inspired YAML (aget-framework convention)
+# Concepts: 10
+# Project: ARC-001 (Archetype Customization v3.5)
+
+apiVersion: aget.framework/v1
+kind: OntologySpec
+metadata:
+  name: developer-archetype-ontology
+  version: 1.0.0
+  created: 2026-02-14
+  author: private-aget-framework-AGET
+  archetype: developer
+  description: >
+    Formal vocabulary for developer archetype agents. Defines concepts for
+    code development, testing, dependency management, build processes, and
+    code review. Grounded in software engineering best practices.
+  extends: ONTOLOGY_personal_ai_systems_v1.0.yaml
+
+# ============================================================================
+# CONCEPT SCHEME
+# ============================================================================
+
+conceptScheme:
+  uri: aget:ontology/developer
+  prefLabel: Developer Archetype Ontology
+  definition: >
+    A vocabulary for describing developer agent capabilities including code
+    authoring, test execution, dependency management, build coordination,
+    and code review processes.
+  hasTopConcept:
+    - aget:archetype/developer/Code
+    - aget:archetype/developer/Test
+    - aget:archetype/developer/Build
+  relatedScheme:
+    - aget:ontology/personal-ai-systems
+
+# ============================================================================
+# CONCEPTS
+# ============================================================================
+
+concepts:
+
+  # --------------------------------------------------------------------------
+  # Concept: Code
+  # --------------------------------------------------------------------------
+  - id: DEV-001
+    uri: aget:archetype/developer/Code
+    prefLabel: Code
+    altLabel:
+      - Source_Code
+      - Codebase
+      - Implementation
+    definition: >
+      The source code artifacts that a developer agent creates, modifies,
+      reviews, or maintains. The primary work product of development.
+    scopeNote: >
+      AGET developers work with code through read, edit, write tools.
+      Code changes follow commit governance (L027) and review processes.
+    theoreticalBasis:
+      primary: Software Engineering
+      source: IEEE SWEBOK
+      reference: https://www.computer.org/education/bodies-of-knowledge/software-engineering
+    broader: null
+    narrower:
+      - aget:archetype/developer/Code_Change
+    related:
+      - aget:archetype/developer/Test
+      - aget:archetype/developer/Build
+    example:
+      - "src/main.py"
+      - "tests/test_feature.py"
+    inScheme: aget:ontology/developer
+    cluster: Code Management
+
+  # --------------------------------------------------------------------------
+  # Concept: Code_Change
+  # --------------------------------------------------------------------------
+  - id: DEV-002
+    uri: aget:archetype/developer/Code_Change
+    prefLabel: Code_Change
+    altLabel:
+      - Diff
+      - Patch
+      - Modification
+    definition: >
+      A discrete modification to the codebase, tracked through version
+      control as a commit or set of commits.
+    scopeNote: >
+      AGET: Changes governed by commit protocol (L027). Pre-commit hooks
+      validate changes. Changes bundled into PRs for review.
+    theoreticalBasis:
+      primary: Version Control
+      source: Git
+    broader: aget:archetype/developer/Code
+    narrower: null
+    related:
+      - aget:archetype/developer/Pull_Request
+      - aget:archetype/developer/Code_Review
+    inScheme: aget:ontology/developer
+    cluster: Code Management
+
+  # --------------------------------------------------------------------------
+  # Concept: Test
+  # --------------------------------------------------------------------------
+  - id: DEV-003
+    uri: aget:archetype/developer/Test
+    prefLabel: Test
+    altLabel:
+      - Test_Case
+      - Test_Suite
+      - Verification
+    definition: >
+      Automated or manual verification that code behaves as expected.
+      Tests validate requirements and prevent regression.
+    scopeNote: >
+      AGET: Per ADR-007, no test theater. Tests must be real, runnable,
+      and meaningful. Test results inform release readiness.
+    theoreticalBasis:
+      primary: Software Testing
+      source: IEEE 829
+      reference: https://en.wikipedia.org/wiki/Software_testing
+    broader: null
+    narrower:
+      - aget:archetype/developer/Unit_Test
+      - aget:archetype/developer/Integration_Test
+    related:
+      - aget:archetype/developer/Code
+      - aget:archetype/developer/Test_Result
+    example:
+      - "pytest tests/"
+      - "39 tests passing"
+    inScheme: aget:ontology/developer
+    cluster: Testing
+
+  # --------------------------------------------------------------------------
+  # Concept: Unit_Test
+  # --------------------------------------------------------------------------
+  - id: DEV-004
+    uri: aget:archetype/developer/Unit_Test
+    prefLabel: Unit_Test
+    altLabel:
+      - Component_Test
+      - Function_Test
+    definition: >
+      A test that verifies a single unit of code (function, method, class)
+      in isolation from dependencies.
+    scopeNote: >
+      Fast feedback loop. Mocks external dependencies. Foundation of
+      test pyramid.
+    theoreticalBasis:
+      primary: Test Pyramid
+      source: Mike Cohn
+    broader: aget:archetype/developer/Test
+    narrower: null
+    related:
+      - aget:archetype/developer/Integration_Test
+    inScheme: aget:ontology/developer
+    cluster: Testing
+
+  # --------------------------------------------------------------------------
+  # Concept: Integration_Test
+  # --------------------------------------------------------------------------
+  - id: DEV-005
+    uri: aget:archetype/developer/Integration_Test
+    prefLabel: Integration_Test
+    altLabel:
+      - System_Test
+      - End_to_End_Test
+    definition: >
+      A test that verifies multiple components working together,
+      often with real dependencies or infrastructure.
+    scopeNote: >
+      Slower but higher confidence. Validates component interactions.
+      May require environment setup.
+    theoreticalBasis:
+      primary: Integration Testing
+      source: IEEE SWEBOK
+    broader: aget:archetype/developer/Test
+    narrower: null
+    related:
+      - aget:archetype/developer/Unit_Test
+    inScheme: aget:ontology/developer
+    cluster: Testing
+
+  # --------------------------------------------------------------------------
+  # Concept: Test_Result
+  # --------------------------------------------------------------------------
+  - id: DEV-006
+    uri: aget:archetype/developer/Test_Result
+    prefLabel: Test_Result
+    altLabel:
+      - Test_Report
+      - Test_Output
+    definition: >
+      The outcome of test execution: pass, fail, error, or skip.
+      Results inform development decisions and release readiness.
+    scopeNote: >
+      AGET: Test results are evidence for quality gates. Failures
+      block release per ADR-007.
+    theoreticalBasis:
+      primary: Test Reporting
+      source: JUnit XML format
+    broader: null
+    narrower: null
+    related:
+      - aget:archetype/developer/Test
+    enumValues:
+      - Pass      # Test succeeded
+      - Fail      # Assertion failed
+      - Error     # Test crashed
+      - Skip      # Test intentionally skipped
+    inScheme: aget:ontology/developer
+    cluster: Testing
+
+  # --------------------------------------------------------------------------
+  # Concept: Dependency
+  # --------------------------------------------------------------------------
+  - id: DEV-007
+    uri: aget:archetype/developer/Dependency
+    prefLabel: Dependency
+    altLabel:
+      - Package
+      - Library
+      - External_Dependency
+    definition: >
+      External code or library that the codebase requires to function.
+      Dependencies are managed through package managers and lockfiles.
+    scopeNote: >
+      AGET: Dependencies declared in requirements.txt, package.json, etc.
+      Version pinning prevents unexpected changes.
+    theoreticalBasis:
+      primary: Dependency Management
+      source: Semantic Versioning
+      reference: https://semver.org/
+    broader: null
+    narrower: null
+    related:
+      - aget:archetype/developer/Build
+      - aget:archetype/developer/Code
+    example:
+      - "requirements.txt"
+      - "package.json"
+    inScheme: aget:ontology/developer
+    cluster: Build Management
+
+  # --------------------------------------------------------------------------
+  # Concept: Build
+  # --------------------------------------------------------------------------
+  - id: DEV-008
+    uri: aget:archetype/developer/Build
+    prefLabel: Build
+    altLabel:
+      - Build_Process
+      - Compilation
+      - Package
+    definition: >
+      The process of transforming source code into deployable artifacts.
+      May include compilation, bundling, testing, and packaging.
+    scopeNote: >
+      Build success is prerequisite for release. CI/CD pipelines
+      automate build processes.
+    theoreticalBasis:
+      primary: Build Automation
+      source: Continuous Integration
+      reference: https://en.wikipedia.org/wiki/Continuous_integration
+    broader: null
+    narrower: null
+    related:
+      - aget:archetype/developer/Code
+      - aget:archetype/developer/Dependency
+      - aget:archetype/developer/Test
+    inScheme: aget:ontology/developer
+    cluster: Build Management
+
+  # --------------------------------------------------------------------------
+  # Concept: Pull_Request
+  # --------------------------------------------------------------------------
+  - id: DEV-009
+    uri: aget:archetype/developer/Pull_Request
+    prefLabel: Pull_Request
+    altLabel:
+      - PR
+      - Merge_Request
+      - Change_Request
+    definition: >
+      A request to merge code changes from one branch to another,
+      typically triggering review and CI checks before merge.
+    scopeNote: >
+      AGET: PRs require description, test plan. Created via gh pr create.
+      PR template enforced per governance.
+    theoreticalBasis:
+      primary: Code Review
+      source: GitHub Flow
+      reference: https://docs.github.com/en/get-started/quickstart/github-flow
+    broader: null
+    narrower: null
+    related:
+      - aget:archetype/developer/Code_Change
+      - aget:archetype/developer/Code_Review
+    example:
+      - "gh pr create --title 'feat: add feature' --body '...'"
+    inScheme: aget:ontology/developer
+    cluster: Code Review
+
+  # --------------------------------------------------------------------------
+  # Concept: Code_Review
+  # --------------------------------------------------------------------------
+  - id: DEV-010
+    uri: aget:archetype/developer/Code_Review
+    prefLabel: Code_Review
+    altLabel:
+      - Review
+      - Peer_Review
+      - PR_Review
+    definition: >
+      The process of examining code changes for quality, correctness,
+      and adherence to standards before merging.
+    scopeNote: >
+      AGET: Reviews check for security vulnerabilities, adherence to
+      patterns, and test coverage. Reviewers provide feedback or approval.
+    theoreticalBasis:
+      primary: Code Review Best Practices
+      source: Google Engineering Practices
+      reference: https://google.github.io/eng-practices/review/
+    broader: null
+    narrower: null
+    related:
+      - aget:archetype/developer/Pull_Request
+      - aget:archetype/developer/Code_Change
+    enumValues:
+      - Approve     # Changes look good
+      - RequestChanges  # Changes needed before merge
+      - Comment     # Feedback without approval/rejection
+    inScheme: aget:ontology/developer
+    cluster: Code Review
+
+# ============================================================================
+# RELATIONSHIPS
+# ============================================================================
+
+relationships:
+  - subject: aget:archetype/developer/Code_Change
+    predicate: skos:broader
+    object: aget:archetype/developer/Code
+    note: Changes are modifications to code
+
+  - subject: aget:archetype/developer/Unit_Test
+    predicate: skos:broader
+    object: aget:archetype/developer/Test
+    note: Unit tests are a type of test
+
+  - subject: aget:archetype/developer/Integration_Test
+    predicate: skos:broader
+    object: aget:archetype/developer/Test
+    note: Integration tests are a type of test
+
+  - subject: aget:archetype/developer/Test
+    predicate: skos:related
+    object: aget:archetype/developer/Code
+    note: Tests verify code behavior
+
+  - subject: aget:archetype/developer/Pull_Request
+    predicate: skos:related
+    object: aget:archetype/developer/Code_Review
+    note: PRs trigger code review
+
+# ============================================================================
+# COLLECTIONS
+# ============================================================================
+
+collections:
+  - uri: aget:collection/developer/CodeManagement
+    prefLabel: Code Management Concepts
+    description: Concepts for managing source code
+    members:
+      - aget:archetype/developer/Code
+      - aget:archetype/developer/Code_Change
+
+  - uri: aget:collection/developer/Testing
+    prefLabel: Testing Concepts
+    description: Concepts for software testing
+    members:
+      - aget:archetype/developer/Test
+      - aget:archetype/developer/Unit_Test
+      - aget:archetype/developer/Integration_Test
+      - aget:archetype/developer/Test_Result
+
+  - uri: aget:collection/developer/BuildManagement
+    prefLabel: Build Management Concepts
+    description: Concepts for build and dependency management
+    members:
+      - aget:archetype/developer/Build
+      - aget:archetype/developer/Dependency
+
+  - uri: aget:collection/developer/CodeReview
+    prefLabel: Code Review Concepts
+    description: Concepts for code review process
+    members:
+      - aget:archetype/developer/Pull_Request
+      - aget:archetype/developer/Code_Review
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+provenance:
+  project: ARC-001
+  created: 2026-02-14
+  author: private-aget-framework-AGET
+  methodology: >
+    Derived from developer archetype DEVELOPER_SPEC.md, software engineering
+    best practices, and operational patterns from development workflows.
+  relatedLdocs:
+    - L463_entity_archetype_alignment.md
+    - L398_instance_archetype_baseline_compliance.md
+
+validation:
+  conceptCount: 10
+  clusters: 4
+  theoreticalGrounding: 100%
+  skosCompliance: partial
+
+# End of ONTOLOGY_developer.yaml
