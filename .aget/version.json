@@ -1,8 +1,8 @@
 {
-  "aget_version": "3.5.0",
+  "aget_version": "3.6.0",
   "manifest_version": "3.0",
   "created": "2025-10-19",
-  "updated": "2026-02-14",
+  "updated": "2026-02-21",
   "template": "developer",
   "agent_name": "template-developer-aget",
   "instance_type": "template",
@@ -40,6 +40,7 @@
     "v3.1.0 -> v3.2.0: 2026-01-04 (Specification Architecture)",
     "v3.2.0 -> v3.2.1: 2026-01-04 (Patch: Version inventory coherence - L444 remediation)",
     "v3.3.0 -> v3.4.0: 2026-01-18",
-    "v3.4.0 -> v3.5.0: 2026-02-14 (Archetype Customization)"
+    "v3.4.0 -> v3.5.0: 2026-02-14 (Archetype Customization)",
+    "v3.5.0 -> v3.6.0: 2026-02-21 (Infrastructure Maturation)"
   ]
 }
