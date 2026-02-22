@@ -2,7 +2,7 @@
 
 > Build, test, and review code with purpose-built development skills
 
-**Version**: v3.5.0 | **Archetype**: Developer | **Skills**: 3 specialized + 13 universal
+**Version**: v3.6.0 | **Archetype**: Developer | **Skills**: 3 specialized + 14 universal
 
 ---
 
@@ -20,7 +20,7 @@ The Developer archetype brings **software engineering expertise** to your AI cod
 
 ## Skills
 
-Developer agents come with **3 archetype-specific skills** plus 13 universal AGET skills.
+Developer agents come with **3 archetype-specific skills** plus the universal AGET skills.
 
 ### Archetype Skills
 
@@ -103,9 +103,9 @@ python3 -m pytest tests/ -v
 
 | Attribute | Value |
 |-----------|-------|
-| **Framework** | [AGET v3.5.0](https://github.com/aget-framework/aget) |
+| **Framework** | [AGET v3.6.0](https://github.com/aget-framework/aget) |
 | **Archetype** | Developer |
-| **Skills** | 16 total (3 archetype + 13 universal) |
+| **Skills** | 17 total (3 archetype + 14 universal) |
 | **Ontology** | 10 concepts, 4 clusters |
 | **License** | Apache 2.0 |
 
