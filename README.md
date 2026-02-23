@@ -14,6 +14,8 @@ The Developer archetype brings **software engineering expertise** to your AI cod
 - **Code quality standards** — Lint code with project-aware configuration
 - **Review discipline** — Structured PR reviews with categorized feedback
 
+**Domain knowledge that compounds**: Developer agents build persistent expertise in your codebase — project conventions, common failure patterns, test strategies, and architectural decisions. Unlike tools that start fresh each session, your agent accumulates context that makes each code review sharper, each test run more targeted, and each fix more informed.
+
 **For evaluators**: If your team needs an AI that understands the full development lifecycle — not just code generation — the Developer archetype provides specialized skills for building, testing, and maintaining quality code.
 
 ---
@@ -96,6 +98,7 @@ python3 -m pytest tests/ -v
 | **Linting** | Single tool | Project-aware configuration precedence |
 | **PR review** | Line-by-line comments | Structured review with blocking/suggestion/nitpick categories |
 | **Vocabulary** | Informal | Formal ontology (Code_Change, Test_Result, Pull_Request) |
+| **Domain memory** | Starts fresh each session | Accumulates codebase expertise over time |
 
 ---
 
