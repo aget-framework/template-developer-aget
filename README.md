@@ -2,7 +2,7 @@
 
 > Build, test, and review code with purpose-built development skills
 
-**Version**: v3.6.0 | **Archetype**: Developer | **Skills**: 3 specialized + 14 universal
+**Version**: v3.7.0 | **Archetype**: Developer | **Skills**: 3 specialized + 15 universal
 
 ---
 
@@ -106,9 +106,9 @@ python3 -m pytest tests/ -v
 
 | Attribute | Value |
 |-----------|-------|
-| **Framework** | [AGET v3.6.0](https://github.com/aget-framework/aget) |
+| **Framework** | [AGET v3.7.0](https://github.com/aget-framework/aget) |
 | **Archetype** | Developer |
-| **Skills** | 17 total (3 archetype + 14 universal) |
+| **Skills** | 18 total (3 archetype + 15 universal) |
 | **Ontology** | 10 concepts, 4 clusters |
 | **License** | Apache 2.0 |
 
