@@ -75,6 +75,22 @@ vim .aget/version.json  # Set "portfolio": "legalon"
 
 *Note: v2 evolution (AGET) will enable code modification capabilities*
 
+### Skill Routing
+
+| Task | Skill | When to Use |
+|------|-------|-------------|
+| Start session | /aget-wake-up | Beginning of every session |
+| End session | /aget-wind-down | End of every session |
+| Research topic | /aget-study-up | Before proposing changes |
+| Record learning | /aget-record-lesson | After discovering reusable insight |
+| Create project | /aget-create-project | Starting multi-gate work |
+| Review project | /aget-review-project | Mid-flight assessment |
+| File issue | /aget-file-issue | Reporting bugs or gaps |
+| Check health | /aget-check-health | Verifying agent structure |
+| Lint code | /aget-lint-code | Checking code style and quality |
+| Review PR | /aget-review-pr | Evaluating pull request changes |
+| Run tests | /aget-run-tests | Executing test suites |
+
 ## Multi-Repository Analysis
 
 **Specialty**: Analyze code across nearby directories (e.g., ~/github/)
