@@ -2,7 +2,7 @@
 
 > Build, test, and review code with purpose-built development skills
 
-**Version**: v3.7.0 | **Archetype**: Developer | **Skills**: 3 specialized + 15 universal
+**Version**: v3.8.0 | **Archetype**: Developer | **Skills**: 3 specialized + 15 universal
 
 ---
 
@@ -118,7 +118,7 @@ Skills are provided by the template. Agents and rules directories are scaffolded
 
 | Attribute | Value |
 |-----------|-------|
-| **Framework** | [AGET v3.7.0](https://github.com/aget-framework/aget) |
+| **Framework** | [AGET v3.8.0](https://github.com/aget-framework/aget) |
 | **Archetype** | Developer |
 | **Skills** | 18 total (3 archetype + 15 universal) |
 | **Ontology** | 10 concepts, 4 clusters |
