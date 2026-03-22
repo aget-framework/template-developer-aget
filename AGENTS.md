@@ -86,6 +86,7 @@ vim .aget/version.json  # Set "portfolio": "workco"
 | Create project | /aget-create-project | Starting multi-gate work |
 | Review project | /aget-review-project | Mid-flight assessment |
 | File issue | /aget-file-issue | Reporting bugs or gaps |
+| Enhance spec | /aget-enhance-spec | Improving specification maturity |
 | Check health | /aget-check-health | Verifying agent structure |
 | Lint code | /aget-lint-code | Checking code style and quality |
 | Review PR | /aget-review-pr | Evaluating pull request changes |
