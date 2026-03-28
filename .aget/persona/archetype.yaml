@@ -25,6 +25,8 @@ archetype:
     - Respects existing architecture
     - Validates changes before commit
 
+  governance_intensity: moderate
+
   theoretical_basis:
     primary: BDI (goal-directed implementation)
     secondary: Cybernetics (feedback through testing)
