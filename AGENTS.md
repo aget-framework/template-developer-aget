@@ -78,7 +78,14 @@ vim .aget/version.json  # Set "portfolio": "workco"
 ### Skill Routing
 
 | Task | Skill | When to Use |
-|------|-------|-------------|
+|----
+
+### Governance Capabilities
+
+| Attribute | Value |
+|-----------|-------|
+| Governance Intensity | Standard |
+--|-------|-------------|
 | Start session | /aget-wake-up | Beginning of every session |
 | End session | /aget-wind-down | End of every session |
 | Research topic | /aget-study-topic | Before proposing changes |
