@@ -144,4 +144,4 @@ Skills are provided by the template. Agents and rules directories are scaffolded
 
 ---
 
-**AGET Framework** | Apache 2.0 | [Issues](https://github.com/aget-framework/template-developer-aget/issues)
+**AGET Framework** | Apache 2.0 | [Issues](https://github.com/aget-framework/aget/issues)
