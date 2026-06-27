@@ -2,7 +2,7 @@
 
 > Build, test, and review code with purpose-built development skills
 
-**Version**: v3.12.0 | **Archetype**: Developer | **Skills**: 3 specialized + 15 universal
+**Version**: v3.23.1 | **Archetype**: Developer | **Skills**: 3 specialized + 15 universal
 
 ---
 
