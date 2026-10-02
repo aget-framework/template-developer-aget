@@ -3,6 +3,8 @@
 ## [3.36.0] - 2026-10-03 - "Fleet migration kit for supervisors"
 
 ### Changed
+- The 2026-04-12 migration record under `.aget/evolution/` no longer carries the maintainer's local home path: the backup path it records now starts with `~`.
+- `manifest.yaml` `template.version` now reads 3.36.0. It had stayed at 3.4.0 since January 2026 while the other version fields moved.
 - `scripts/study_topic.py`: when every hit falls below the score floor, the report says so and no longer prints a "novel topic" verdict.
 - Advanced the template's framework identity and migration history to v3.36.0. The v3.36.0 fleet migration kit ships in the framework core (`scripts/migration_kit/` in `aget-framework/aget`) and is not a template payload; this template carries no other change from its v3.35.0 tag.
 - Not in this release: the repaired `scripts/close_authorization_guard.py`. This template still ships the guard at its 3.34.0 version; the repair is deferred to the next release. See `handoffs/CORRECTIONS_v3.35.0.md` rows 4 and 5 in `aget-framework/aget` for what to do until then.
