@@ -2,7 +2,7 @@
 
 > Build, test, and review code with purpose-built development skills
 
-**Version**: v3.35.0 | **Archetype**: Developer | **Skills**: 41 installed; 29 required universal
+**Version**: v3.35.1 | **Archetype**: Developer | **Skills**: 41 installed; 29 required universal
 
 ---
 
@@ -118,7 +118,7 @@ Skills are provided by the template. Agents and rules directories are scaffolded
 
 | Attribute | Value |
 |-----------|-------|
-| **Framework** | [AGET v3.35.0](https://github.com/aget-framework/aget) |
+| **Framework** | [AGET v3.35.1](https://github.com/aget-framework/aget) |
 | **Archetype** | Developer |
 | **Skills** | 41 installed (29 required universal + 12 additional); see `.claude/skills/` |
 | **Ontology** | 10 concepts, 4 clusters |
@@ -146,4 +146,4 @@ Skills are provided by the template. Agents and rules directories are scaffolded
 
 **AGET Framework** | Apache 2.0 | [Issues](https://github.com/aget-framework/aget/issues)
 
-AGET version: 3.35.0
+AGET version: 3.35.1
