@@ -3,7 +3,7 @@
 #
 # Archetype: developer
 # Created: 2026-02-14
-# Author: private-aget-framework-AGET
+# Author: aget-framework
 # Format: SKOS-inspired YAML (aget-framework convention)
 # Concepts: 10
 # Project: ARC-001 (Archetype Customization v3.5)
@@ -14,7 +14,7 @@ metadata:
   name: developer-archetype-ontology
   version: 1.0.0
   created: 2026-02-14
-  author: private-aget-framework-AGET
+  author: aget-framework
   archetype: developer
   description: >
     Formal vocabulary for developer archetype agents. Defines concepts for
@@ -412,7 +412,7 @@ collections:
 provenance:
   project: ARC-001
   created: 2026-02-14
-  author: private-aget-framework-AGET
+  author: aget-framework
   methodology: >
     Derived from developer archetype DEVELOPER_SPEC.md, software engineering
     best practices, and operational patterns from development workflows.
