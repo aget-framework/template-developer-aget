@@ -1,7 +1,7 @@
 # Developer Template Scope Boundaries
 
 **Template**: template-developer-aget
-**Version**: 3.37.0
+**Version**: 3.37.1
 **Date**: 2025-12-27
 
 ---

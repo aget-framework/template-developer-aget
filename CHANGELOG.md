@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.37.1] - 2026-11-04
+
+### Changed
+- Advanced the template's framework identity and migration history to v3.37.1. No template content changes: the fix in this patch (the migration kit's release-age default is now 0) is in the core framework's migration kit, which is not part of a template.
+- Updated the template's version strings (configuration headers, governance documents, manifest and identity line) to 3.37.1.
+
 ## [3.37.0] - 2026-10-17
 
 ### Changed
